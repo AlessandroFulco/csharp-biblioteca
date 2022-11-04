@@ -23,8 +23,6 @@
     Buon lavoro! (modificato) 
 */
 
-Utente ut1 = new Utente("Fulco", "Alessandro", "alessandro@prova.it", "1235124431", true);
-Utente ut2 = new Utente("Rossi", "Mario", "mario@prova.it", "1235124431", false);
 
 public class Utente
 {

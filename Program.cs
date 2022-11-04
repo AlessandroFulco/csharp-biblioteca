@@ -24,6 +24,31 @@
 */
 
 
+Libro libro1 = new Libro(200, "12345678", "topolino", "10-05-2006", false, 1, "Alessandro Fulco", "Statistica");
+Libro libro2 = new Libro(200, "18295432", "Guerra e pace", "10-05-2006", false, 3, "Alessandro Fulco", "Statistica");
+Libro libro3 = new Libro(200, "93572746", "La Conoscienza di Zeno", "10-05-2006", false, 5, "Alessandro Fulco", "Statistica");
+
+
+Dvd dvd1 = new Dvd(3, "31647523", "A sangue freddo", "14-03-2011", false, 2, "Alessandro Fulco", "Matematica");
+Dvd dvd2 = new Dvd(3, "62357524", "Grandi speranze", "14-03-2011", false, 4, "Alessandro Fulco", "Matematica");
+Dvd dvd3 = new Dvd(3, "72624262", "Pinocchio", "14-03-2011", false, 6, "Alessandro Fulco", "Matematica");
+
+Console.WriteLine("------ LIBRI ------");
+Console.WriteLine(libro1.ToString());
+Console.WriteLine(libro2.ToString());
+Console.WriteLine(libro3.ToString());
+
+Console.WriteLine();
+
+Console.WriteLine("----- DVD ------");
+Console.WriteLine(dvd1.ToString());
+Console.WriteLine(dvd2.ToString());
+Console.WriteLine(dvd3.ToString());
+
+Console.WriteLine();
+
+Utente ut1 = new Utente("Fulco", "Alessandro", "alessandro@prova.it", "1235124431", true);
+Utente ut2 = new Utente("Rossi", "Mario", "mario@prova.it", "1235124431", false);
 
 
 
