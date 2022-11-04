@@ -23,9 +23,26 @@
     Buon lavoro! (modificato) 
 */
 
+Utente ut1 = new Utente("Fulco", "Alessandro", "alessandro@prova.it", "1235124431", true);
+Utente ut2 = new Utente("Rossi", "Mario", "mario@prova.it", "1235124431", false);
 
 public class Utente
 {
+    public string Cognome { get; set; }
+    public string Nome { get; set; }
+    public string Email { get; set; }
+    public string Telefono { get; set; }
+    public bool Registrato { get; set; }
 
+    public Utente(string cognome, string nome, string email, string telefono, bool registrato)
+    {
+        Cognome = cognome;
+        Nome = nome;
+        Email = email;
+        Telefono = telefono;
+        Registrato = registrato;
+    }
+
+    
 }
 
