@@ -23,76 +23,40 @@
     Buon lavoro! (modificato) 
 */
 
-//creazioni libri
-Libro libro1 = new Libro(200, "12345678", "topolino", "10-05-2006", false, 1, "Alessandro Fulco", "Statistica");
-Libro libro2 = new Libro(200, "18295432", "Guerra e pace", "10-05-2006", false, 3, "Alessandro Fulco", "Statistica");
-Libro libro3 = new Libro(200, "93572746", "La Conoscienza di Zeno", "10-05-2006", false, 5, "Alessandro Fulco", "Statistica");
+Biblioteca biblioteca = new Biblioteca();
 
-//creazione lista libri
-List<Libro> libroList = new List<Libro>();
-libroList.Add(libro1); //aggiunta libro alla lista
-libroList.Add(libro2); //aggiunta libro alla lista
-libroList.Add(libro3); //aggiunta libro alla lista
+biblioteca.CreaPrestitiLibri(biblioteca.libroList[0]);
 
-//creazione Dvd
-Dvd dvd1 = new Dvd(3, "31647523", "A sangue freddo", "14-03-2011", false, 2, "Alessandro Fulco", "Matematica");
-Dvd dvd2 = new Dvd(3, "62357524", "Grandi speranze", "14-03-2011", false, 4, "Alessandro Fulco", "Matematica");
-Dvd dvd3 = new Dvd(3, "72624262", "Pinocchio", "14-03-2011", false, 6, "Alessandro Fulco", "Matematica");
-
-//creazione Lista Dvd
-List<Dvd> dvdList = new List<Dvd>();
-dvdList.Add(dvd1); //aggiunta dvd alla lista
-dvdList.Add(dvd2); //aggiunta dvd alla lista
-dvdList.Add(dvd3); //aggiunta dvd alla lista
-
-Console.WriteLine("------ LIBRI ------");
-Console.WriteLine(libro1.ToString());
-Console.WriteLine(libro2.ToString());
-Console.WriteLine(libro3.ToString());
-
-Console.WriteLine();
-
-Console.WriteLine("----- DVD ------");
-Console.WriteLine(dvd1.ToString());
-Console.WriteLine(dvd2.ToString());
-Console.WriteLine(dvd3.ToString());
-
-Console.WriteLine();
-//creazione utenti
-Utente ut1 = new Utente("Fulco", "Alessandro", "alessandro@prova.it", "1235124431", true);
-Utente ut2 = new Utente("Rossi", "Mario", "mario@prova.it", "1235124431", false);
+biblioteca.StampaPrestiti();
 
 
-//creazione prestito
-Prestito prestitolibro1 = new Prestito("10-10-2022", "15-10-2022", libro1);
-//creazione lista prestiti
-List<Prestito> prestiti = new List<Prestito>();
-prestiti.Add(prestitolibro1); //aggiunta prestito alla lista
 
-//stampa lista prestiti
-Console.WriteLine("------------------ LISTA PRESTITI --------------------");
-foreach(Prestito item in prestiti)
-{
-    Console.WriteLine(item.ToString());
-}
+//prestiti.Add(prestitolibro1); //aggiunta prestito alla lista
 
-Console.Write("inserisci il codice del libro o il titolo: ");
-string inputUtente = Console.ReadLine();
+////stampa lista prestiti
+//Console.WriteLine("------------------ LISTA PRESTITI --------------------");
+//foreach(Prestito item in prestiti)
+//{
+//    Console.WriteLine(item.ToString());
+//}
 
-foreach(Libro item in libroList)
-{
-    if(inputUtente == item.Codice || inputUtente == item.Titolo)
-    {
-        Console.WriteLine("libro trovato: {0} - {1}", item.Titolo, item.Stato);
-    }
-}
-foreach(Dvd item in dvdList)
-{
-    if(inputUtente == item.Codice || inputUtente == item.Titolo)
-    {
-        Console.WriteLine("Dvd trovato: {0} - {1}", item.Titolo, item.Stato);
-    }
-}
+//Console.Write("inserisci il codice del libro o il titolo: ");
+//string inputUtente = Console.ReadLine();
+
+//foreach(Libro item in libroList)
+//{
+//    if(inputUtente == item.Codice || inputUtente == item.Titolo)
+//    {
+//        Console.WriteLine("libro trovato: {0} - {1}", item.Titolo, item.Stato);
+//    }
+//}
+//foreach(Dvd item in dvdList)
+//{
+//    if(inputUtente == item.Codice || inputUtente == item.Titolo)
+//    {
+//        Console.WriteLine("Dvd trovato: {0} - {1}", item.Titolo, item.Stato);
+//    }
+//}
 
 
 //Il bibliotecario deve poter eseguire delle ricerche per codice o per titolo e, eventualmente, effettuare dei prestiti registrando il periodo (Dal/Al) del prestito e il documento.
@@ -101,6 +65,68 @@ foreach(Dvd item in dvdList)
 //    Buon lavoro! (modificato) 
 public class Biblioteca
 {
+    //Lista libri
+    public List<Libro> libroList = new List<Libro>();
+
+    //lista prestiti
+    public List<Prestito> prestiti = new List<Prestito>();
+
+    public Biblioteca()
+    {
+        //creazioni libri
+        Libro libro1 = new Libro(200, "12345678", "topolino", "10-05-2006", false, 1, "Alessandro Fulco", "Statistica");
+        Libro libro2 = new Libro(200, "18295432", "Guerra e pace", "10-05-2006", false, 3, "Alessandro Fulco", "Statistica");
+        Libro libro3 = new Libro(200, "93572746", "La Conoscienza di Zeno", "10-05-2006", false, 5, "Alessandro Fulco", "Statistica");
+
+        //creazione lista libri
+        
+        libroList.Add(libro1); //aggiunta libro alla lista
+        libroList.Add(libro2); //aggiunta libro alla lista
+        libroList.Add(libro3); //aggiunta libro alla lista
+
+        //creazione Dvd
+        Dvd dvd1 = new Dvd(3, "31647523", "A sangue freddo", "14-03-2011", false, 2, "Alessandro Fulco", "Matematica");
+        Dvd dvd2 = new Dvd(3, "62357524", "Grandi speranze", "14-03-2011", false, 4, "Alessandro Fulco", "Matematica");
+        Dvd dvd3 = new Dvd(3, "72624262", "Pinocchio", "14-03-2011", false, 6, "Alessandro Fulco", "Matematica");
+
+        //creazione Lista Dvd
+        List<Dvd> dvdList = new List<Dvd>();
+        dvdList.Add(dvd1); //aggiunta dvd alla lista
+        dvdList.Add(dvd2); //aggiunta dvd alla lista
+        dvdList.Add(dvd3); //aggiunta dvd alla lista
+
+        Console.WriteLine("------ LIBRI ------");
+        Console.WriteLine(libro1.ToString());
+        Console.WriteLine(libro2.ToString());
+        Console.WriteLine(libro3.ToString());
+
+        Console.WriteLine();
+
+        Console.WriteLine("----- DVD ------");
+        Console.WriteLine(dvd1.ToString());
+        Console.WriteLine(dvd2.ToString());
+        Console.WriteLine(dvd3.ToString());
+
+        Console.WriteLine();
+        //creazione utenti
+        Utente ut1 = new Utente("Fulco", "Alessandro", "alessandro@prova.it", "1235124431", true);
+        Utente ut2 = new Utente("Rossi", "Mario", "mario@prova.it", "1235124431", false);
+    }
+
+    public void CreaPrestitiLibri(Libro libro)
+    {
+        //creazione prestito
+        Prestito prestitolibro1 = new Prestito("10-10-2022", "15-10-2022", libro);
+        prestiti.Add(prestitolibro1);
+    }
+
+    public void StampaPrestiti()
+    {
+        foreach(Prestito prestito in prestiti)
+        {
+            Console.WriteLine(prestito.ToString());
+        }
+    }
     
 }
 
@@ -121,6 +147,6 @@ public class Prestito
 
     public override string ToString()
     {
-        return "Durata prestito: " + Inizio + " - " + Fine + "documento: " + Documento;
+        return "Durata prestito: " + Inizio + " - " + Fine + " documento: " + Documento.Titolo;
     }
 }
