@@ -24,13 +24,8 @@
 */
 
 
-
-
-
-public class Biblioteca
+public class Utente
 {
 
 }
-
-
 
