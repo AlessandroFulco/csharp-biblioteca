@@ -25,7 +25,7 @@
 
 Biblioteca biblioteca = new Biblioteca();
 
-biblioteca.CreaPrestitiLibri("Guerra e pace");
+biblioteca.CreaPrestiti("A sangue freddo");
 
 biblioteca.StampaPrestiti();
 

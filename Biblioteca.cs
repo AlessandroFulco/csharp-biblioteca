@@ -71,10 +71,11 @@ public class Biblioteca
     }
 
     //crea ed aggiunge il prestito alla lista
-    public bool CreaPrestitiLibri(string libro)
+    public virtual bool CreaPrestiti(string libro)
     {
         Libro libroTrovato = null;
-        if(libro != null)
+        Dvd dvdTrovato = null;
+        if(libroTrovato == null)
         {
             foreach (Libro documento in libroList)
             {
@@ -88,6 +89,18 @@ public class Biblioteca
                     break;
                 }
             }
+            foreach (Dvd documento in dvdList)
+            {
+                if (documento.Codice == libro && documento.Stato == false || documento.Titolo == libro && documento.Stato == false)
+                {
+                    documento.Stato = true;
+                    dvdTrovato = documento;
+                    //creazione prestito
+                    Prestito prestitoLibro1 = new Prestito("10-10-2022", "15-10-2022", dvdTrovato);
+                    prestiti.Add(prestitoLibro1);
+                    break;
+                }
+            }
             return true;
         }
         else
@@ -95,13 +108,11 @@ public class Biblioteca
             return false;
         }
 
+        
+
     }
-    public void CreaPrestitiDvd(Dvd dvd)
-    {
-        //creazione prestito
-        Prestito prestitoDvd1 = new Prestito("10-10-2022", "15-10-2022", dvd);
-        prestiti.Add(prestitoDvd1);
-    }
+    
+    
 
     public void StampaPrestiti()
     {
