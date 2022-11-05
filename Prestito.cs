@@ -23,29 +23,22 @@
     Buon lavoro! (modificato) 
 */
 
-Biblioteca biblioteca = new Biblioteca();
+public class Prestito
+{
+    public string Inizio { get; set; }
+    public string Fine { get; set; }
+    public Documento Documento { get; set; }
 
-biblioteca.CreaPrestitiLibri("Guerra e pace");
+    public Prestito(string inizio, string fine, Documento item)
+    {
+        Inizio = inizio;
+        Fine = fine;
+        Documento = item;
+        Documento.Stato = true;
+    }
 
-biblioteca.StampaPrestiti();
-
-
-
-// ricerca prestito per titolo o codice
-//Console.Write("inserisci il codice del libro o il titolo: ");
-//string inputUtente = Console.ReadLine();
-
-//foreach(Libro item in libroList)
-//{
-//    if(inputUtente == item.Codice || inputUtente == item.Titolo)
-//    {
-//        Console.WriteLine("libro trovato: {0} - {1}", item.Titolo, item.Stato);
-//    }
-//}
-//foreach(Dvd item in dvdList)
-//{
-//    if(inputUtente == item.Codice || inputUtente == item.Titolo)
-//    {
-//        Console.WriteLine("Dvd trovato: {0} - {1}", item.Titolo, item.Stato);
-//    }
-//}
+    public override string ToString()
+    {
+        return "Durata prestito: " + Inizio + " - " + Fine + " documento: " + Documento.Titolo;
+    }
+}

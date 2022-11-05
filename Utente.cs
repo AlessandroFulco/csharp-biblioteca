@@ -40,7 +40,5 @@ public class Utente
         Telefono = telefono;
         Registrato = registrato;
     }
-
-    
 }
 

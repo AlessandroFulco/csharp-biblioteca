@@ -23,29 +23,20 @@
     Buon lavoro! (modificato) 
 */
 
-Biblioteca biblioteca = new Biblioteca();
-
-biblioteca.CreaPrestitiLibri("Guerra e pace");
-
-biblioteca.StampaPrestiti();
 
 
 
-// ricerca prestito per titolo o codice
-//Console.Write("inserisci il codice del libro o il titolo: ");
-//string inputUtente = Console.ReadLine();
 
-//foreach(Libro item in libroList)
-//{
-//    if(inputUtente == item.Codice || inputUtente == item.Titolo)
-//    {
-//        Console.WriteLine("libro trovato: {0} - {1}", item.Titolo, item.Stato);
-//    }
-//}
-//foreach(Dvd item in dvdList)
-//{
-//    if(inputUtente == item.Codice || inputUtente == item.Titolo)
-//    {
-//        Console.WriteLine("Dvd trovato: {0} - {1}", item.Titolo, item.Stato);
-//    }
-//}
+public class Dvd : Documento
+{
+    public int Durata { get; set; }
+    public Dvd(int durata, string codice, string titolo, string anno, bool stato, int scaffale, string autore, string settori) : base(codice, titolo, anno, stato, scaffale, autore, settori)
+    {
+        Durata = durata;
+    }
+
+    public override string ToString()
+    {
+        return Durata + ", " + base.ToString();
+    }
+}

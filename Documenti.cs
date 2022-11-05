@@ -56,31 +56,3 @@ public class Documento
     }
 
 }
-
-public class Libro : Documento
-{
-    public int Pagine { get; set; }
-    public Libro(int pagine, string codice, string titolo, string anno, bool stato, int scaffale, string autore, string settori) : base(codice, titolo, anno, stato, scaffale, autore, settori)
-    {
-        Pagine = pagine;
-    }
-
-    public override string ToString()
-    {
-        return Pagine + ", " + base.ToString();
-    }
-}
-
-public class Dvd : Documento
-{
-    public int Durata { get; set; }
-    public Dvd(int durata, string codice, string titolo, string anno, bool stato, int scaffale, string autore, string settori) : base(codice, titolo, anno, stato, scaffale, autore, settori)
-    {
-        Durata = durata;
-    }
-
-    public override string ToString()
-    {
-        return Durata + ", " + base.ToString();
-    }
-}
