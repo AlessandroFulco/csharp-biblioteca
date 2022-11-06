@@ -25,12 +25,16 @@
 
 public class Prestito
 {
+    public string Nome { get; set; }
+    public string Cognome { get; set; }
     public string Inizio { get; set; }
     public string Fine { get; set; }
     public Documento Documento { get; set; }
 
-    public Prestito(string inizio, string fine, Documento item)
+    public Prestito(string nome, string cognome, string inizio, string fine, Documento item)
     {
+        Nome = nome;
+        Cognome = cognome;
         Inizio = inizio;
         Fine = fine;
         Documento = item;
@@ -39,6 +43,6 @@ public class Prestito
 
     public override string ToString()
     {
-        return "Durata prestito: " + Inizio + " - " + Fine + " documento: " + Documento.Titolo;
+        return"Nome: " + Nome + "Cognome: " + Cognome + " Durata prestito: " + Inizio + " - " + Fine + " documento: " + Documento.Titolo;
     }
 }

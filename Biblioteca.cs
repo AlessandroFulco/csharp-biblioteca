@@ -25,10 +25,12 @@
 
 public class Biblioteca
 {
+    
+
     //Lista libri
     public List<Libro> libroList = new List<Libro>();
     //Lista Dvd
-    List<Dvd> dvdList = new List<Dvd>();
+    public List<Dvd> dvdList = new List<Dvd>();
     //lista prestiti
     public List<Prestito> prestiti = new List<Prestito>();
 
@@ -52,76 +54,107 @@ public class Biblioteca
         dvdList.Add(dvd2); //aggiunta dvd alla lista
         dvdList.Add(dvd3); //aggiunta dvd alla lista
 
-        Console.WriteLine("------ LIBRI ------");
-        Console.WriteLine(libro1.ToString());
-        Console.WriteLine(libro2.ToString());
-        Console.WriteLine(libro3.ToString());
-
-        Console.WriteLine();
-
-        Console.WriteLine("----- DVD ------");
-        Console.WriteLine(dvd1.ToString());
-        Console.WriteLine(dvd2.ToString());
-        Console.WriteLine(dvd3.ToString());
-
-        Console.WriteLine();
         //creazione utenti
         Utente ut1 = new Utente("Fulco", "Alessandro", "alessandro@prova.it", "1235124431", true);
         Utente ut2 = new Utente("Rossi", "Mario", "mario@prova.it", "1235124431", false);
     }
 
+    //ricerca libro
+    public Libro CercaLibro(string input)
+    {
+        //variabile per la funzione di ricerca dei documenti
+        Libro Risultato = null;
+
+        foreach (Libro libro in libroList)
+        {
+            if (libro.Titolo.ToLower() == input || libro.Codice == input)
+            {
+                Risultato = libro;
+                break;
+            }
+        }
+        return Risultato;
+    }
+    //ricerca dvd
+    public Dvd CercaDvd(string input)
+    {
+        //variabile per la funzione di ricerca dei documenti
+        Dvd Risultato = null;
+
+        foreach (Dvd dvd in dvdList)
+        {
+            if (dvd.Titolo.ToLower() == input || dvd.Codice == input)
+            {
+                Risultato = dvd;
+                break;
+            }
+        }
+        return Risultato;
+    }
+
+
+
     //crea ed aggiunge il prestito alla lista
-    public virtual bool CreaPrestiti(string libro)
+    public bool CreaPrestitoLibro(string nome, string cognome, string libro)
     {
         Libro libroTrovato = null;
-        Dvd dvdTrovato = null;
-        if(libroTrovato == null)
-        {
+
             foreach (Libro documento in libroList)
             {
-                if (documento.Codice == libro && documento.Stato == false || documento.Titolo == libro && documento.Stato == false)
+                if (documento.Codice.ToLower() == libro && documento.Stato == false || documento.Titolo.ToLower() == libro && documento.Stato == false)
                 {
                     documento.Stato = true;
                     libroTrovato = documento;
                     //creazione prestito
-                    Prestito prestitoLibro1 = new Prestito("10-10-2022", "15-10-2022", libroTrovato);
+                    Prestito prestitoLibro1 = new Prestito(nome, cognome, "10-10-2022", "15-10-2022", libroTrovato);
                     prestiti.Add(prestitoLibro1);
                     break;
                 }
             }
-            foreach (Dvd documento in dvdList)
-            {
-                if (documento.Codice == libro && documento.Stato == false || documento.Titolo == libro && documento.Stato == false)
-                {
-                    documento.Stato = true;
-                    dvdTrovato = documento;
-                    //creazione prestito
-                    Prestito prestitoLibro1 = new Prestito("10-10-2022", "15-10-2022", dvdTrovato);
-                    prestiti.Add(prestitoLibro1);
-                    break;
-                }
-            }
-            return true;
-        }
-        else
+        if (libroTrovato == null)
+                
         {
             return false;
         }
-
-        
-
+        else if (libroTrovato.Stato == true)
+                return true;
+        else 
+            return false;
     }
-    
-    
+    public bool CreaPrestitoDvd(string nome, string cognome, string dvd)
+    {
+        Dvd dvdTrovato = null;
 
+            foreach (Dvd documento in dvdList)
+            {
+                if (documento.Codice.ToLower() == dvd && documento.Stato == false || documento.Titolo.ToLower() == dvd && documento.Stato == false)
+                {
+                    documento.Stato = true;
+                dvdTrovato = documento;
+                    //creazione prestito
+                    Prestito prestitoLibro1 = new Prestito(nome, cognome, "10-10-2022", "15-10-2022", dvdTrovato);
+                    prestiti.Add(prestitoLibro1);
+                    break;
+                }
+            }
+        if (dvdTrovato == null)
+                
+        {
+            return false;
+        }
+        else if (dvdTrovato.Stato == true)
+                return true;
+        else 
+            return false;
+    }
+
+    //stampa prestito
     public void StampaPrestiti()
     {
+        Console.WriteLine("Prestiti: ");
         foreach(Prestito prestito in prestiti)
         {
             Console.WriteLine(prestito.ToString());
         }
     }
-
-    
-    
 }
